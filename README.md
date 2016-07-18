@@ -10,4 +10,5 @@
 `segmented_articles` contains the output from the workflow, which consists of a series of images, with each image representing a single article clipping.
 
 #### segment_periodicals.py
-`segment_periodicals.py` contains the code used to segment input images into disparate output images. Usage: `python segment_periodicals.py {{path to jp2 file in periodical_images}}`
+`segment_periodicals.py` contains the code used to segment input images into disparate output images. Usage: 
+```python segment_periodicals.py {{path to jp2 file in periodical_images}}```
