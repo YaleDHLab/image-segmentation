@@ -1,4 +1,6 @@
 from skimage import filters, segmentation, io
+from skimage.measure import label
+from skimage.color import label2rgb
 from scipy import ndimage
 import matplotlib.pyplot as plt
 import sys
@@ -45,3 +47,21 @@ clean_border = segmentation.clear_border(mask)
 
 plt.imshow(clean_border, cmap='gray')
 plt.show()
+
+
+#######################
+# Label image regions #
+#######################
+
+labeled = label(clean_border)
+image_label_overlay = label2rgb(labeled, image=im)
+
+fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(6, 6))
+ax.imshow(image_label_overlay)
+plt.show()
+
+###############
+# Crop images #
+###############
+
+# can crop using: cropped = image_array[x1:x2,y1:y2]
