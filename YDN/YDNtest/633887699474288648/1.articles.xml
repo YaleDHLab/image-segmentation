@@ -1,0 +1,154 @@
+<page id="1" width="3018" height="4271" widthEncodedInXMLdoc="3018" heightEncodedInXMLdoc="4271" unit="pixel">
+  <article>
+    <id>DIVL10</id>
+    <title>University Bulletin.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">241:742:391:31</coord>
+      <coord inpage="1">95:804:687:355</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">5233:11385:8490:475</coord>
+      <coord inpage="1">2062:12336:14918:5447</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL17</id>
+    <title>Modern Language Club.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">190:1218:487:30</coord>
+      <coord inpage="1">82:1279:702:1950</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">4125:18689:10575:460</coord>
+      <coord inpage="1">1780:19625:15243:29921</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL24</id>
+    <title>Sunday Services.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">273:3285:326:29</coord>
+      <coord inpage="1">88:3345:696:748</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">5928:50405:7078:444</coord>
+      <coord inpage="1">1910:51326:15113:11477</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL31</id>
+    <title>Meetings for Day of Prayer.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">871:739:555:31</coord>
+      <coord inpage="1">800:800:701:1424</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">18913:11339:12051:475</coord>
+      <coord inpage="1">17371:12275:15222:21850</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL38</id>
+    <title>Enrollment in the Graduate Departments.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">801:2278:696:78</coord>
+      <coord inpage="1">795:2387:713:190</coord>
+      <coord inpage="1">791:3703:722:405</coord>
+      <coord inpage="1">795:3676:714:22</coord>
+      <coord inpage="1">795:3341:718:329</coord>
+      <coord inpage="1">795:3285:714:49</coord>
+      <coord inpage="1">795:3003:714:276</coord>
+      <coord inpage="1">795:2957:713:37</coord>
+      <coord inpage="1">795:2621:714:329</coord>
+      <coord inpage="1">795:2585:713:27</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">17393:34954:15113:1196</coord>
+      <coord inpage="1">17263:36626:15482:2915</coord>
+      <coord inpage="1">17176:56819:15678:6214</coord>
+      <coord inpage="1">17263:56405:15504:337</coord>
+      <coord inpage="1">17263:51264:15591:5048</coord>
+      <coord inpage="1">17263:50405:15504:751</coord>
+      <coord inpage="1">17263:46078:15504:4234</coord>
+      <coord inpage="1">17263:45372:15482:567</coord>
+      <coord inpage="1">17263:40217:15504:5048</coord>
+      <coord inpage="1">17263:39664:15482:414</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL57</id>
+    <title>Phi Beta Kappa Meeting.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">1609:739:514:32</coord>
+      <coord inpage="1">1521:803:688:708</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">34938:11339:11161:491</coord>
+      <coord inpage="1">33028:12321:14939:10863</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL64</id>
+    <title>Yale vs. Lehigh.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">1695:1577:390:36</coord>
+      <coord inpage="1">1517:1640:697:708</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">36806:24197:8468:552</coord>
+      <coord inpage="1">32941:25164:15135:10863</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL71</id>
+    <title>Arrangement of Photographs in the Gymnasium.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">1519:2418:695:88</coord>
+      <coord inpage="1">1522:2537:690:1567</coord>
+      <coord inpage="1">2230:738:697:1192</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">32984:37102:15091:1350</coord>
+      <coord inpage="1">33049:38928:14983:24044</coord>
+      <coord inpage="1">48423:11324:15135:18290</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL78</id>
+    <title>Princeton vs. Univ. of Pennsylvania.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">2260:1965:639:74</coord>
+      <coord inpage="1">2241:2077:684:224</coord>
+      <coord inpage="1">2219:2301:744:540</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">49075:30151:13875:1135</coord>
+      <coord inpage="1">48662:31869:14852:3437</coord>
+      <coord inpage="1">48184:35306:16155:8285</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL87</id>
+    <title>Subjects for the Ten Eyck Prize-Speaking, Yale College.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">2236:2865:696:79</coord>
+      <coord inpage="1">2238:2976:687:962</coord>
+      <coord inpage="1">2238:3973:679:128</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">48554:43961:15113:1212</coord>
+      <coord inpage="1">48597:45664:14918:14761</coord>
+      <coord inpage="1">48597:60962:14744:1964</coord>
+    </clip>
+  </article>
+</page>

@@ -1,0 +1,100 @@
+<page id="3" width="3018" height="4271" widthEncodedInXMLdoc="3018" heightEncodedInXMLdoc="4271" unit="pixel">
+  <article>
+    <id>DIVL117</id>
+    <title>Yale, '98, vs. Columbia, '98.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">871:3677:580:40</coord>
+      <coord inpage="3">806:3747:687:398</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">18913:56420:12594:613</coord>
+      <coord inpage="3">17502:57494:14918:6106</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL124</id>
+    <title>YALE LOG.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">1072:2147:857:57</coord>
+      <coord inpage="3">798:2257:699:1393</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">23278:32943:18609:874</coord>
+      <coord inpage="3">17328:34631:15178:21374</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL131</id>
+    <title>The University Football Suits.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">1559:2263:604:30</coord>
+      <coord inpage="3">1516:2323:698:477</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">33853:34723:13115:460</coord>
+      <coord inpage="3">32919:35644:15156:7319</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL138</id>
+    <title>Cincinnati Club Meeting.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">1619:2858:502:30</coord>
+      <coord inpage="3">1516:2920:702:516</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">35156:43853:10900:460</coord>
+      <coord inpage="3">32919:44805:15243:7917</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL145</id>
+    <title>NOTICES.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">1766:3498:202:24</coord>
+      <coord inpage="3">1518:3541:697:612</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">38348:53673:4386:368</coord>
+      <coord inpage="3">32962:54333:15135:9390</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL195</id>
+    <title>Adv. 4 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">81:214:698:3949</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">1758:3283:15156:60594</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL196</id>
+    <title>Adv. 5 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">784:188:1430:1922</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">17024:2884:31052:29491</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL197</id>
+    <title>Adv. 6 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">2223:254:709:3877</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">48271:3897:15395:59489</coord>
+    </clip>
+  </article>
+</page>

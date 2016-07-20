@@ -1,0 +1,96 @@
+<page id="4" width="3009" height="4231" widthEncodedInXMLdoc="3009" heightEncodedInXMLdoc="4231" unit="pixel">
+  <article>
+    <id>DIVL112</id>
+    <title>NOTICES.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="4">1003:1617:269:43</coord>
+      <coord inpage="4">799:1667:687:506</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">21845:25046:5858:666</coord>
+      <coord inpage="4">17401:25820:14962:7837</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL119</id>
+    <title>LOCAL NOTICES.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="4">936:2195:433:48</coord>
+      <coord inpage="4">811:2249:692:918</coord>
+      <coord inpage="4">1518:1607:680:1584</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">20385:33998:9430:743</coord>
+      <coord inpage="4">17663:34835:15071:14219</coord>
+      <coord inpage="4">33061:24891:14810:24534</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL138</id>
+    <title>Adv. 8 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">58:138:2849:93</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">1263:2137:62050:1440</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL139</id>
+    <title>Adv. 9 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">69:277:710:3759</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">1502:4290:15463:58224</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL140</id>
+    <title>Adv. 10 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">2214:270:743:3808</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">48220:4182:16182:58983</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL141</id>
+    <title>Adv. 11 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">800:256:1416:1331</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">17423:3965:30840:20616</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL142</id>
+    <title>Adv. 12 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">795:3198:1422:885</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">17314:49534:30970:13707</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL143</id>
+    <title>Adv. 13 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">96:4093:2822:80</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">2090:63397:61462:1239</coord>
+    </clip>
+  </article>
+</page>

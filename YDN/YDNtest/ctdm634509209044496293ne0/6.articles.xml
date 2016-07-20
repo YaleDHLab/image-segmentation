@@ -1,0 +1,84 @@
+<page id="6" width="0" height="0" widthEncodedInXMLdoc="0" heightEncodedInXMLdoc="0" unit="inch1200">
+  <article>
+    <id>MODSMD_SECTION1</id>
+    <title></title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="1">3530:64052:8208:808</coord>
+      <coord inpage="1">15158:64052:10367:838</coord>
+      <coord inpage="1">26717:64111:11987:554</coord>
+      <coord inpage="1">40234:63962:10637:419</coord>
+      <coord inpage="1">52963:64067:9715:299</coord>
+      <coord inpage="2">39491:2317:25100:62679</coord>
+      <coord inpage="3">1344:2259:24945:62293</coord>
+      <coord inpage="3">39401:2155:25079:62353</coord>
+      <coord inpage="4">1076:10529:25240:54557</coord>
+      <coord inpage="4">3814:2285:57974:7512</coord>
+      <coord inpage="4">39487:10529:24567:54199</coord>
+      <coord inpage="5">3870:2344:20181:16798</coord>
+      <coord inpage="5">26849:57845:12037:6988</coord>
+      <coord inpage="5">39401:1956:25014:63131</coord>
+      <coord inpage="6">1631:2217:24935:62282</coord>
+      <coord inpage="6">26969:52362:11998:12048</coord>
+      <coord inpage="6">39526:2380:25025:61839</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE25</id>
+    <title>CALENDAR</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">31527:2542:4401:399</coord>
+      <coord inpage="6">28287:3503:10010:4361</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE26</id>
+    <title>UNIVERSITY NOTICES.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">29896:8751:7731:561</coord>
+      <coord inpage="6">27170:9638:11931:22056</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE27</id>
+    <title>MISCELLANEOUS NOTICES.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">28913:32582:8714:857</coord>
+      <coord inpage="6">27013:33750:11842:17932</coord>
+    </clip>
+  </article>
+  <article>
+    <id>unlabeledDIVL260</id>
+    <title>Adv. 15 Page 6</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">1631:2217:24935:62282</coord>
+    </clip>
+  </article>
+  <article>
+    <id>unlabeledDIVL261</id>
+    <title>Adv. 16 Page 6</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">26969:52362:11998:12048</coord>
+    </clip>
+  </article>
+  <article>
+    <id>unlabeledDIVL262</id>
+    <title>Adv. 17 Page 6</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="6">39526:2380:25025:61839</coord>
+    </clip>
+  </article>
+</page>

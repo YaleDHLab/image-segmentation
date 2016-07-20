@@ -1,0 +1,74 @@
+<page id="2" width="3018" height="4271" widthEncodedInXMLdoc="3018" heightEncodedInXMLdoc="4271" unit="pixel">
+  <article>
+    <id>DIVL96</id>
+    <title>Yale Daily News</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="2">132:213:640:157</coord>
+      <coord inpage="2">95:390:694:1227</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">2866:3268:13897:2409</coord>
+      <coord inpage="2">2062:5984:15070:18827</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL103</id>
+    <title></title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="2">82:1657:709:2502</coord>
+      <coord inpage="2">807:198:695:668</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">1780:25425:15395:38391</coord>
+      <coord inpage="2">17523:3038:15091:10249</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL110</id>
+    <title>Freshman-Union.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="2">979:885:379:32</coord>
+      <coord inpage="2">813:955:683:421</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">21258:13579:8229:491</coord>
+      <coord inpage="2">17654:14653:14831:6459</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL192</id>
+    <title>Adv. 1 Page 2</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="2">804:1417:694:2664</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">17458:21742:15070:40876</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL193</id>
+    <title>Adv. 2 Page 2</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="2">806:4119:2116:44</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">17502:63202:45948:675</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL194</id>
+    <title>Adv. 3 Page 2</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="2">1517:181:1420:3903</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">32941:2777:30834:59888</coord>
+    </clip>
+  </article>
+</page>
