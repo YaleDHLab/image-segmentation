@@ -1,0 +1,72 @@
+<page id="2" width="0" height="0" widthEncodedInXMLdoc="0" heightEncodedInXMLdoc="0" unit="inch1200">
+  <article>
+    <id>MODSMD_ARTICLE16</id>
+    <title>Yale Daily News</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">1511:2360:11775:1618</coord>
+      <coord inpage="2">1511:4231:11956:13614</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE17</id>
+    <title>ANONYMITY?</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">4421:18009:5752:668</coord>
+      <coord inpage="2">1556:19033:11798:14624</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE18</id>
+    <title>HELPING HAND.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">3090:33999:8662:786</coord>
+      <coord inpage="2">1534:35306:11821:21127</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE19</id>
+    <title>COMMUNICATIONS.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">2684:57042:8888:801</coord>
+      <coord inpage="2">1714:58200:11979:6310</coord>
+      <coord inpage="2">14009:2182:12294:38706</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE20</id>
+    <title>LEAVE OF ABSENCE GIVEN TO ASST. PROF. WHITFORD.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">13964:41453:12272:1262</coord>
+      <coord inpage="2">13919:43011:12294:7809</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE21</id>
+    <title></title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">14370:62268:11685:2167</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE22</id>
+    <title>MISCELLANEOUS NOTICES.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">27477:38468:10828:653</coord>
+      <coord inpage="2">26868:39196:11933:25195</coord>
+    </clip>
+  </article>
+</page>
