@@ -380,8 +380,6 @@ def write_segmented_images(cropped_images_dict):
 
         for c, cropped_rectangle in enumerate(cropped_rectangles):
 
-          print cropped_rectangle
-
           out_path  = "cropped_images/" + issue_directory + "/"
           out_path += page + "/article_" + str(article) + "/" 
 
