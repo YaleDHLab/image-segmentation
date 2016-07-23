@@ -4,7 +4,7 @@ from skimage.color import label2rgb
 from scipy import ndimage
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-import sys
+import sys, os
 
 image_file = sys.argv[1]
 file_extension = image_file.split(".")[-1]
@@ -94,7 +94,11 @@ plt.show()
 # Crop images #
 ###############
 
+out_dir = "segmented_articles/"
+if not os.path.exists(out_dir):
+  os.makedirs(out_dir)
+
 # can crop using: cropped = image_array[x1:x2,y1:y2]
 
 for c, cropped_image in enumerate(cropped_images):
-  io.imsave( str(c) + ".png", cropped_image)
+  io.imsave( out_dir + str(c) + ".png", cropped_image)
