@@ -1,0 +1,74 @@
+<page id="4" width="2642" height="3895" widthEncodedInXMLdoc="2642" heightEncodedInXMLdoc="3895" unit="pixel">
+  <article>
+    <id>DIVL72</id>
+    <title>YALE LOG.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">1188:938:252:28</coord>
+      <coord inpage="3">917:993:813:2779</coord>
+      <coord inpage="4">910:172:814:2189</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">29468:15782:6250:471</coord>
+      <coord inpage="3">22746:16707:20166:46757</coord>
+      <coord inpage="4">22572:2893:20191:36830</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL81</id>
+    <title>AMUSEMENTS.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="4">1148:2412:336:28</coord>
+      <coord inpage="4">910:2466:812:720</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">28476:40582:8334:471</coord>
+      <coord inpage="4">22572:41491:20141:12114</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL96</id>
+    <title>Adv. 6 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">82:189:814:3594</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">2034:3180:20191:60470</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL97</id>
+    <title>Adv. 7 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">904:3220:796:213</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">22423:54177:19744:3583</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL98</id>
+    <title>Adv. 8 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">914:3469:1712:335</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">22671:58367:42466:5636</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL99</id>
+    <title>Adv. 9 Page 4</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="4">1738:181:818:3281</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="4">43111:3045:20290:55204</coord>
+    </clip>
+  </article>
+</page>

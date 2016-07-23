@@ -1,0 +1,60 @@
+<page id="2" width="2878" height="3810" widthEncodedInXMLdoc="2878" heightEncodedInXMLdoc="3810" unit="pixel">
+  <article>
+    <id>DIVL24</id>
+    <title>How Peterkin Kept His Resolutions.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="1">995:2463:886:125</coord>
+      <coord inpage="1">993:2595:884:1099</coord>
+      <coord inpage="1">1901:587:910:1577</coord>
+      <coord inpage="1">1900:2164:909:1536</coord>
+      <coord inpage="2">81:226:873:1386</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="1">22657:42365:20175:2150</coord>
+      <coord inpage="1">22611:44636:20129:18903</coord>
+      <coord inpage="1">43287:10096:20721:27125</coord>
+      <coord inpage="1">43264:37222:20698:26420</coord>
+      <coord inpage="2">1844:3887:19879:23840</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL35</id>
+    <title>YALE LOG.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="2">341:2226:360:65</coord>
+      <coord inpage="2">78:2307:889:1307</coord>
+      <coord inpage="2">982:210:891:3428</coord>
+      <coord inpage="2">1888:215:902:2159</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">7764:38288:8197:1118</coord>
+      <coord inpage="2">1776:39682:20243:22481</coord>
+      <coord inpage="2">22361:3612:20288:58964</coord>
+      <coord inpage="2">42991:3698:20539:37136</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL49</id>
+    <title>Adv. 1 Page 2</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="2">77:1662:883:518</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">1753:28587:20106:8910</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL50</id>
+    <title>Adv. 2 Page 2</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="2">1888:2420:933:1225</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="2">42991:41625:21245:21070</coord>
+    </clip>
+  </article>
+</page>

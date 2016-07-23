@@ -1,0 +1,51 @@
+<page id="4" width="0" height="0" widthEncodedInXMLdoc="0" heightEncodedInXMLdoc="0" unit="inch1200">
+  <article>
+    <id>MODSMD_SECTION1</id>
+    <title></title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="3">3483:34390:58413:27717</coord>
+      <coord inpage="4">1309:4178:14062:58657</coord>
+      <coord inpage="4">49043:35526:15223:27269</coord>
+      <coord inpage="6">32602:30101:14866:33746</coord>
+      <coord inpage="6">47910:2520:15308:60806</coord>
+      <coord inpage="7">32251:40162:28788:23845</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE4</id>
+    <title>WEEKEND CALENDAR</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="4">34238:4958:15843:1419</coord>
+      <coord inpage="4">17099:6637:3630:1739</coord>
+      <coord inpage="4">17031:8496:13954:28309</coord>
+      <coord inpage="4">34265:8316:14048:28469</coord>
+      <coord inpage="4">16937:38525:4939:1679</coord>
+      <coord inpage="4">16950:41124:13914:20752</coord>
+      <coord inpage="4">34171:41184:13900:20192</coord>
+      <coord inpage="4">49947:6937:4048:1839</coord>
+      <coord inpage="4">49853:8836:13819:26090</coord>
+    </clip>
+  </article>
+  <article>
+    <id>unlabeledDIVL143</id>
+    <title>Adv. 2 Page 4</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="4">1309:4178:14062:58657</coord>
+    </clip>
+  </article>
+  <article>
+    <id>unlabeledDIVL144</id>
+    <title>Adv. 3 Page 4</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="4">49043:35526:15223:27269</coord>
+    </clip>
+  </article>
+</page>

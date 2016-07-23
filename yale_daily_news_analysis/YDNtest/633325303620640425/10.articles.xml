@@ -1,0 +1,46 @@
+<page id="3" width="2878" height="3810" widthEncodedInXMLdoc="2878" heightEncodedInXMLdoc="3810" unit="pixel">
+  <article>
+    <id>DIVL51</id>
+    <title>Adv. 3 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">22:158:920:3420</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">500:2717:20949:58826</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL52</id>
+    <title>Adv. 4 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">21:3583:2784:204</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">478:61630:63394:3508</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL53</id>
+    <title>Adv. 5 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">951:142:898:3429</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">21655:2442:20448:58981</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL58</id>
+    <title>Adv. 10 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">1849:144:944:3429</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">42103:2476:21495:58981</coord>
+    </clip>
+  </article>
+</page>

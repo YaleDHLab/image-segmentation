@@ -1,0 +1,61 @@
+<page id="3" width="3009" height="4239" widthEncodedInXMLdoc="3009" heightEncodedInXMLdoc="4239" unit="pixel">
+  <article>
+    <id>DIVL103</id>
+    <title>YALE LOG.</title>
+    <type>ARTICLE</type>
+    <clip type="normal">
+      <coord inpage="3">985:1537:927:85</coord>
+      <coord inpage="3">812:1653:696:1851</coord>
+      <coord inpage="3">1524:1634:704:1906</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">21452:23762:20189:1314</coord>
+      <coord inpage="3">17685:25555:15158:28616</coord>
+      <coord inpage="3">33192:25261:15332:29466</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL134</id>
+    <title>Adv. 4 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">69:171:723:3986</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">1502:2643:15746:61623</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL135</id>
+    <title>Adv. 5 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">802:163:1416:1350</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">17467:2519:30840:20871</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL136</id>
+    <title>Adv. 6 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">810:3556:1417:605</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">17641:54975:30861:9353</coord>
+    </clip>
+  </article>
+  <article>
+    <id>DIVL137</id>
+    <title>Adv. 7 Page 3</title>
+    <type>ADVERTISEMENT</type>
+    <clip type="normal">
+      <coord inpage="3">2239:163:725:3997</coord>
+    </clip>
+    <clip type="uc">
+      <coord inpage="3">48764:2519:15790:61793</coord>
+    </clip>
+  </article>
+</page>

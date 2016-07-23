@@ -1,0 +1,69 @@
+<item>
+  <title>Yale Daily News no. 66 January 16 1985</title>
+  <object>index.cpd</object>
+  <desc>index.desc</desc>
+  <icon>index.icon</icon>
+  <supp>index.pdf</supp>
+  <supp></supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 1</title>
+  <object>1.jp2</object>
+  <desc>1.desc</desc>
+  <icon>1.icon</icon>
+  <supp>1.words.txt</supp>
+  <supp>1.words2.txt</supp>
+  <supp>1.articles.xml</supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 2</title>
+  <object>2.jp2</object>
+  <desc>2.desc</desc>
+  <icon>2.icon</icon>
+  <supp>2.words.txt</supp>
+  <supp>2.words2.txt</supp>
+  <supp>2.articles.xml</supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 3</title>
+  <object>3.jp2</object>
+  <desc>3.desc</desc>
+  <icon>3.icon</icon>
+  <supp>3.words.txt</supp>
+  <supp>3.words2.txt</supp>
+  <supp>3.articles.xml</supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 4</title>
+  <object>4.jp2</object>
+  <desc>4.desc</desc>
+  <icon>4.icon</icon>
+  <supp>4.words.txt</supp>
+  <supp>4.words2.txt</supp>
+  <supp>4.articles.xml</supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 5</title>
+  <object>5.jp2</object>
+  <desc>5.desc</desc>
+  <icon>5.icon</icon>
+  <supp>5.words.txt</supp>
+  <supp>5.words2.txt</supp>
+  <supp>5.articles.xml</supp>
+  <supp></supp>
+</item>
+<item>
+  <title>Page 6</title>
+  <object>6.jp2</object>
+  <desc>6.desc</desc>
+  <icon>6.icon</icon>
+  <supp>6.words.txt</supp>
+  <supp>6.words2.txt</supp>
+  <supp>6.articles.xml</supp>
+  <supp></supp>
+</item>

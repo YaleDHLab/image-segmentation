@@ -1,0 +1,49 @@
+<page id="2" width="0" height="0" widthEncodedInXMLdoc="0" heightEncodedInXMLdoc="0" unit="inch1200">
+  <article>
+    <id>MODSMD_ARTICLE18</id>
+    <title>Yale Daily News</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">2119:2263:10888:1608</coord>
+      <coord inpage="2">1690:4005:11858:12165</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE19</id>
+    <title>MESHED GEARS.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">4305:16618:6199:684</coord>
+      <coord inpage="2">1285:17869:12308:28158</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE20</id>
+    <title>COMMUNICATION.</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">4666:46504:6379:625</coord>
+      <coord inpage="2">1826:47487:12060:17094</coord>
+      <coord inpage="2">14270:2203:11903:13014</coord>
+    </clip>
+  </article>
+  <article>
+    <id>MODSMD_ARTICLE21</id>
+    <title>TEMPEST IN A TEAPOT</title>
+    <type></type>
+    <subheadline></subheadline>
+    <clip type="uc">
+      <coord inpage="2">30186:2442:6447:1340</coord>
+      <coord inpage="2">26962:4214:11858:15620</coord>
+      <coord inpage="2">26917:20653:11858:4675</coord>
+      <coord inpage="2">26827:26252:11835:17154</coord>
+      <coord inpage="2">27075:44032:11993:7475</coord>
+      <coord inpage="2">27278:52267:11812:3767</coord>
+      <coord inpage="2">27368:56808:11790:4124</coord>
+      <coord inpage="2">27458:61737:11858:2427</coord>
+    </clip>
+  </article>
+</page>
