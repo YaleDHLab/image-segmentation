@@ -26,7 +26,7 @@ def convert_jp2_images_to_numpy_arrays(root_data_directory):
     issue_images = get_images_in_directory(issue_directory)
 
     # create process pool using all available cpu processors
-    pool_one = Pool()
+    pool_one = Pool(n_processes)
 
     # use the process pool to convert each jp2 image to a numpy array
     for result in pool_one.imap(image_path_to_npy, issue_images):
@@ -303,11 +303,16 @@ def generate_issue_page_rectangle_mapping(root_data_directory):
 # Segment Images #
 ##################
 
-def segment_images():
-  """Read in the issue_to_pages_to_rectangles JSON, read in the 
+def segment_images(process_id):
+  """Read in a process id that will indicate which enumerated issues
+  the current process is responsible for. Then read into memory
+  the issue_to_pages_to_rectangles JSON, read in the
   numpy array that corresponds to each image file identified in
   that JSON file, pluck out the appropriate rectangles, and save
-  them to disk"""
+  them to disk. To ensure equal division of labor among processors,
+  only allow the current process to work on an issue directory if
+  issue directory index position % total number of processes ==
+  process id"""
 
   with open("issue_to_pages_to_rectangles.json") as f:
     rectangle_mappings = json.load(f)
@@ -315,7 +320,14 @@ def segment_images():
   # create a dictionary of the rectangles to crop
   cropped_images = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 
-  for issue_directory in rectangle_mappings.iterkeys():
+  for c, issue_directory in enumerate(rectangle_mappings.iterkeys()):
+
+    # to distribute work among available processors, enumerate the issue directories,
+    # take the current issue directory number modulo the total number of processes,
+    # and check if that value == the current process id; if not, continue
+    if c % n_processes != process_id:
+      continue
+
     for page in rectangle_mappings[issue_directory].iterkeys():
 
       # fetch the numpy array for cropping
@@ -399,11 +411,14 @@ if __name__ == "__main__":
   # Global params 
   ###
 
-  # define the directory that contains subdirectories for each paper issue
-  root_data_directory = "./yale_daily_news_data"
+  # Define the directory that contains subdirectories for each paper issue
+  root_data_directory = "./YDNtest/"
 
-  # define whether to run code in verbose mode
+  # Define whether to run code in verbose mode
   verbosity_level = 1
+
+  # Identify the maximum number of processors to use during analysis
+  n_processes = 8
 
   # Convert jp2 images into numpy arrays (must only be run once)
   convert_jp2_images_to_numpy_arrays(root_data_directory)
@@ -411,5 +426,12 @@ if __name__ == "__main__":
   # Generate master XML mapping
   generate_issue_page_rectangle_mapping(root_data_directory)
 
+  # Generate array of process ids
+  process_ids = list(xrange(n_processes))
+
+  # Generate a pool to manage processes for image segmentation
+  pool_two = Pool(n_processes)
+
   # Segment the images
-  segment_images()
+  for result in pool_two.imap(segment_images, process_ids):
+    pass
