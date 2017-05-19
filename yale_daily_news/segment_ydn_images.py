@@ -32,19 +32,22 @@ def convert_jp2_images_to_numpy_arrays(root_data_directory):
     for result in pool_one.imap(image_path_to_npy, issue_images):
       pass
 
+    pool_one.close()
+    pool_one.join()
+
 
 def get_issue_directories(directory_with_issue_directories):
   """Read in the path to a directory that contains a series of 
   subdirectories, each of which should contain one or more files 
   for the images/pages in that issue of the paper. Return an array
   of all of the issue subdirectories"""
-  return glob.glob(directory_with_issue_directories + "/*")
+  return glob.glob(directory_with_issue_directories + "/*")[:max_files_to_process]
 
 
 def get_images_in_directory(path_to_directory):
   """Read in a path to a directory and return an array of jp2
   files in that directory"""
-  return list( glob.glob(path_to_directory + "/*.jp2") )
+  return list( glob.glob(path_to_directory + "/*.jp2")[:max_files_to_process] )
 
 
 def image_path_to_npy(path_to_jp2_image):
@@ -155,8 +158,7 @@ def get_xml_articles(xml_content):
   for i in xml_content.split("<article")[1:]:
     article_start = ">".join(i.split(">")[1:])
     article_content = article_start.split("</article")[0]
-    clean_article = article_content
-    articles.append(clean_article)
+    articles.append(article_content)
 
   return articles
 
@@ -338,9 +340,12 @@ def segment_images(process_id):
         article_index   = rectangle["belongs_to_article_index"]
 
         xml_coordinates = rectangle["rectangle_coordinates"]
-        jp2_coordinates = convert_coordinates(xml_coordinates, jp2_array)
+        jp2_coordinates = convert_coordinates(xml_coordinates, jp2_array, page)
 
-        min_row, max_row, min_col, max_col = jp2_coordinates
+        if not jp2_coordinates:
+          continue
+
+        min_row, max_row, min_col, max_col = [int(i) for i in jp2_coordinates]
 
         if verbosity_level > 1:
           print issue_directory, page, article_index
@@ -353,13 +358,15 @@ def segment_images(process_id):
   write_segmented_images(cropped_images)
         
 
-def convert_coordinates(xml_coordinate_array, jp2_array):
+def convert_coordinates(xml_coordinate_array, jp2_array, page):
   """Read in an array of four coordinates that describe a 
-  single rectangle in XML type='uc' coordinates and return 
-  an array of the min_row, max_row, min_col, max_col values
+  single rectangle in XML type='uc' coordinates, a jp2 image pixel
+  array, and a page identifier, and return an array of the
+  min_row, max_row, min_col, max_col values
   needed in jp2 pixels to describe the same rectangle"""
 
   # magic number plucked from client side js in extant YDN app
+  # it's the largest 16 bit integer
   multiplier = 65535
 
   # scale is a positive integer that indicates zoom level in the app
@@ -367,6 +374,10 @@ def convert_coordinates(xml_coordinate_array, jp2_array):
 
   # array of uc coordinates from XML
   left, top, width, height = xml_coordinate_array
+
+  if len(jp2_array.shape) != 2:
+    print 'could not process', page, jp2_array.shape
+    return None
 
   # the height and width of the original image
   img_height, img_width = jp2_array.shape
@@ -412,13 +423,19 @@ if __name__ == "__main__":
   ###
 
   # Define the directory that contains subdirectories for each paper issue
-  root_data_directory = "./YDNtest/"
+  root_data_directory = "/Volumes/LaCie 10GB/YDN/"
 
   # Define whether to run code in verbose mode
   verbosity_level = 1
 
   # Identify the maximum number of processors to use during analysis
-  n_processes = 8
+  n_processes = 4
+
+  # Specify the maximum number of files to process
+  max_files_to_process = 20
+
+  # allow users to toggle multiprocessing on/off
+  multiprocess = False
 
   # Convert jp2 images into numpy arrays (must only be run once)
   convert_jp2_images_to_numpy_arrays(root_data_directory)
@@ -433,5 +450,10 @@ if __name__ == "__main__":
   pool_two = Pool(n_processes)
 
   # Segment the images
-  for result in pool_two.imap(segment_images, process_ids):
-    pass
+  if multiprocess:
+    for result in pool_two.imap(segment_images, process_ids):
+      pass
+
+  else:
+    for i in process_ids:
+      segment_images(i)
