@@ -3,9 +3,9 @@ from multiprocessing import Pool
 from collections import defaultdict
 from skimage import io
 from scipy import ndimage
-import matplotlib.pyplot as plt
+from shutil import Error, move
 import numpy as np
-import glob, os, codecs, sys, json, shutil
+import glob, os, codecs, sys, json
 
 '''
 ## Processing notes
@@ -75,7 +75,8 @@ def image_path_to_npy(path_to_jp2_image):
   convert to a numpy array and save as a npy file
   '''
   jp2_array =  jp2_path_to_array(path_to_jp2_image)
-  write_jp2_array_to_disk(jp2_array, path_to_jp2_image)
+  if jp2_array is not None:
+    write_jp2_array_to_disk(jp2_array, path_to_jp2_image)
 
 
 def jp2_path_to_array(path_to_jp2_file):
@@ -104,10 +105,14 @@ def jp2_path_to_array(path_to_jp2_file):
 
   # if an exception arises, then read the image from disk and write its npy file
   except Exception as exc:
-    jp2_array = io.imread(path_to_jp2_file, plugin='freeimage')     
-    write_jp2_array_to_disk(jp2_array, path_to_jp2_file)
+    try:
+      jp2_array = io.imread(path_to_jp2_file, plugin='freeimage')
+      write_jp2_array_to_disk(jp2_array, path_to_jp2_file)
+      return jp2_array
 
-    return jp2_array
+    except Exception:
+      with open('unprocessable-images.txt', 'a') as out:
+        out.write(path_to_jp2_file + '\n')
 
 
 def write_jp2_array_to_disk(jp2_array, jp2_path):
@@ -154,7 +159,7 @@ def get_page_mappings(issue_directory):
   These inpage values refer to the id attribute of the page
   on which the given rect appears.
 
-  With each issue directory, there's a file /index.cpd that lists
+  With some issue directories, there's a file /index.cpd that lists
   the pages in 1-based index positions:
 
   <?xml version="1.0"?>
@@ -172,7 +177,10 @@ def get_page_mappings(issue_directory):
     </page>
   </cpd>
 
-  Here 1.jp2 is page id 1, 5.jp2 is page id 2, and so on.
+  Here 1.jp2 is page id 1, 5.jp2 is page id 2, and so on. In all observed cases,
+  the image ids are sequential and they identify the images when those image
+  filenames are sorted numerically (e.g. 1.jp2,6.jp2,28.jp2...). Use this insight
+  to create the mappings from image filename to image id.
 
   Return a mapping from page name to page id
   and a mapping from page id to page name.
@@ -181,21 +189,25 @@ def get_page_mappings(issue_directory):
   page_file_to_page_id = {}
   page_id_to_page_file = {}
 
-  with codecs.open(issue_directory + '/index.cpd', 'r', 'utf-8') as f:
-    f = f.read()
-    pages = f.split('<page>')
+  images = glob.glob(issue_directory + '/*.jp2')
+  image_numbers = []
+  for i in images:
+    basename = os.path.basename(i)
+    image_number = int(basename.replace('.jp2',''))
+    image_numbers.append(image_number)
 
-    for page_index, page in enumerate(pages[1:]):
+  image_numbers.sort()
 
-      # use 1-based indexing as the coord elements do
-      page_index += 1
+  page_number = 1
+  for i in image_numbers:
+    for j in images:
+      image_filename = os.path.basename(j)
+      if str(i) + '.jp2' == image_filename:
 
-      page_content = page.split('</page>')[0]
-      page_file = page_content.split('<pagefile>')[1]
-      clean_page_file = page_file.split('</pagefile>')[0]
-      page_file_to_page_id[clean_page_file] = page_index
-      page_id_to_page_file[page_index] = clean_page_file
-
+        # store the 1-based index position of this page image
+        page_file_to_page_id[image_filename] = page_number
+        page_id_to_page_file[page_number] = image_filename
+        page_number += 1
   return page_id_to_page_file, page_file_to_page_id
 
 
@@ -368,7 +380,15 @@ def generate_issue_page_rectangle_mapping(root_data_directory):
             xml_coordinate_array, coord_inpage_value = get_coordinate_array(xml_coord)
 
             # now use the coord_inpage_value to identify the file with the rectangle
-            img_with_rect = page_id_to_page_file[int(coord_inpage_value)]
+            try:
+              img_with_rect = page_id_to_page_file[int(coord_inpage_value)]
+
+            # handle case where issue references a page that doesn't exist
+            except KeyError:
+              with open('missing_page_articles.txt', 'a') as missing_out:
+                msg = issue_directory + ' ' + coord_inpage_value + '\n'
+                missing_out.write(msg)
+                continue
 
             # also parse out the xml file that references the image
             article_xml_filename = os.path.basename(xml_page)
@@ -442,6 +462,8 @@ def segment_images(process_id):
 
       # fetch the numpy array for cropping
       jp2_array = jp2_path_to_array(issue_directory + '/' + page)
+      if jp2_array is None:
+        continue
 
       for rect in rectangle_mappings[issue_directory][page]:
         rect_id = rect['rect_id']
@@ -528,8 +550,13 @@ def sort_segmented_images():
           out_path  = 'segmented_images' + issue + '/' + page_number + '/' + article_index + '/'
           if not os.path.exists(out_path):
             os.makedirs(out_path)
-          shutil.move(img_path, out_path)
-          print(issue, page, article_index, rect_meta)
+          try:
+            move(img_path, out_path)
+
+          # handle the case of missing rects
+          except:
+            with open('missing_rects.txt', 'a') as missing_out:
+              missing_out.write(img_path + '\n')
 
 ##############
 # Main Block #
@@ -540,6 +567,17 @@ if __name__ == '__main__':
   ###
   # Global params 
   ###
+
+  # clear all extant error files
+  for i in [
+    'missing_rects.txt',
+    'missing_page_articles.txt',
+    'unprocessable-images.txt'
+  ]:
+    try:
+      os.remove(i)
+    except:
+      pass
 
   # Define the directory that contains subdirectories for each paper issue
   root_data_directory = '/Users/doug/Desktop/ydn-sample/'

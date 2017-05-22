@@ -1,1 +1,6 @@
 .DS_Store
+yale_daily_news/*.json
+yale_daily_news/*.txt
+yale_daily_news/cropped_images
+yale_daily_news/numpy_arrays
+yale_daily_news/segmented_images
