@@ -3,7 +3,7 @@ from multiprocessing import Pool
 from collections import defaultdict
 from skimage import io
 from scipy import ndimage
-from shutil import Error, move
+from shutil import Error, move, rmtree
 import numpy as np
 import glob, os, codecs, sys, json
 
@@ -430,6 +430,38 @@ def generate_issue_page_rectangle_mapping(root_data_directory):
   with open('imgs_to_crop.json', 'w') as out:
     json.dump(imgs_to_crop, out)
 
+
+####################################
+# Store the titles of each article #
+####################################
+
+def store_article_titles():
+  '''
+  Persist to disk a mapping from the path to an article to the given
+  article's title
+  '''
+  article_to_title = {}
+
+  with open('rects_to_articles.json') as f:
+    rects_to_articles = json.load(f)
+
+  for issue in rects_to_articles.keys():
+    for page in rects_to_articles[issue].keys():
+      for article_index in rects_to_articles[issue][page]:
+        page_number = page.split('.')[0]
+
+        first_image = rects_to_articles[issue][page][article_index][0]
+        article_path = os.path.join(issue, page_number, article_index)
+
+        # store the mapping from article path to first image path
+        first_image_name = str(first_image['rect_id']) + '.png'
+        path_to_first_image = os.path.join(article_path, first_image_name)
+        article_to_title[article_path] = path_to_first_image
+
+  with open('articles_to_titles.json', 'w') as out:
+    json.dump(article_to_title, out)
+
+
 ##################
 # Segment Images #
 ##################
@@ -451,7 +483,6 @@ def segment_images(process_id):
     rectangle_mappings = json.load(f)
 
   for c, issue_directory in enumerate(rectangle_mappings.iterkeys()):
-
     # to distribute work among available processors, enumerate the issue directories,
     # take the current issue directory number modulo the total number of processes,
     # and check if that value == the current process id; if not, continue
@@ -475,6 +506,12 @@ def segment_images(process_id):
           continue
 
         min_row, max_row, min_col, max_col = [int(i) for i in jp2_coordinates]
+
+        # apply the padding to each value
+        min_row -= padding
+        max_row += padding
+        min_col -= padding
+        max_col += padding
 
         if verbosity_level > 1:
           print issue_directory, page, article_index
@@ -536,6 +573,10 @@ def sort_segmented_images():
   articles
   '''
 
+  # store a mapping from a path to a list of segmented image files at that path
+  # the images should be stored in the order in which they should be combined
+  segmented_image_paths = defaultdict(list)
+
   with open('rects_to_articles.json') as f:
     rects_to_articles = json.load(f)
 
@@ -543,20 +584,79 @@ def sort_segmented_images():
     for page in rects_to_articles[issue].keys():
       for article_index in rects_to_articles[issue][page]:
         for rect_meta in rects_to_articles[issue][page][article_index]:
-          page_number = page.split('.')[0]
-
           print('making', 'cropped_images' + issue + '/' + article_index + '/')
-          img_path = 'cropped_images' + issue + '/' + str(rect_meta['rect_id']) + '.png'
+
+          page_number = page.split('.')[0]
+          img_filename = str(rect_meta['rect_id']) + '.png'
+          img_path = 'cropped_images' + issue + '/' + img_filename
           out_path  = 'segmented_images' + issue + '/' + page_number + '/' + article_index + '/'
+
           if not os.path.exists(out_path):
             os.makedirs(out_path)
           try:
             move(img_path, out_path)
 
+            # update the list of images stored at the given path
+            segmented_image_paths[out_path].append(img_filename)
+
           # handle the case of missing rects
           except:
             with open('missing_rects.txt', 'a') as missing_out:
               missing_out.write(img_path + '\n')
+
+  # save the mapping from path to images so we can combine all images per article easily
+  with open('images_per_article.json', 'w') as out:
+    json.dump(segmented_image_paths, out)
+
+##############################
+# Stack the segmented images #
+##############################
+
+def stack_segmented_images():
+  '''
+  Create one composite image for each article's images
+  '''
+
+  with open('images_per_article.json') as f:
+    images_per_article = json.load(f)
+
+  for article_id, article_path in enumerate(images_per_article.keys()):
+    heights = []
+    widths = []
+    vectors = []
+
+    # vertically stack all images in this article
+    for article_image in images_per_article[article_path]:
+      image_path = article_path + article_image
+      article_vector = io.imread(image_path)
+
+      h, w = article_vector.shape[:2]
+      heights.append(h)
+      widths.append(w)
+      vectors.append(article_vector)
+
+    # initialize an empty vector with the required shape
+    composite_image = np.zeros( (sum(heights), max(widths) ), np.uint8)
+
+    # make the background of the image #fff (these are unsigned 8 bit grayscale images)
+    composite_image.fill(255)
+
+    # add the individual elements to the composite image
+    height_sum = 0
+    for idx, i in enumerate(vectors):
+      _h = heights[idx]
+      _w = widths[idx]
+      _vector = vectors[idx] 
+      composite_image[height_sum:height_sum+_h, 0:_w] = _vector
+      height_sum += _h
+
+    # create an outdir for the composite image
+    composite_path = os.path.join('composite_images', article_path)
+    if not os.path.exists(composite_path):
+      os.makedirs(composite_path)
+
+    io.imsave(os.path.join(composite_path, str(article_id) + '.png'), composite_image)
+
 
 ##############
 # Main Block #
@@ -579,6 +679,17 @@ if __name__ == '__main__':
     except:
       pass
 
+  # clean all output dirs
+  for i in [
+    './cropped_images',
+    './segmented_images',
+    './composite_images'
+  ]:
+    try:
+      rmtree(i)
+    except:
+      pass
+
   # Define the directory that contains subdirectories for each paper issue
   root_data_directory = '/Users/doug/Desktop/ydn-sample/'
 
@@ -593,6 +704,9 @@ if __name__ == '__main__':
 
   # allow users to toggle multiprocessing on/off
   multiprocess = False
+
+  # specify how much padding to add to cropped images
+  padding = 5
 
   # Convert jp2 images into numpy arrays (must only be run once)
   convert_jp2_images_to_numpy_arrays(root_data_directory)
@@ -617,3 +731,9 @@ if __name__ == '__main__':
 
   # Rearrange the segmented files into /issue/page/article subdirs
   sort_segmented_images()
+
+  # Store a mapping from each article to that article's title
+  store_article_titles()
+
+  # Combine the segmented images for each article into one composite image
+  stack_segmented_images()
