@@ -133,7 +133,7 @@ def write_jp2_array_to_disk(jp2_array, jp2_path):
   if not os.path.exists(out_directory):
     os.makedirs(out_directory)
 
-  print(' * saving', jp2_path) 
+  print(' * saving', jp2_path)
   np.save(out_path, jp2_array)
 
 
@@ -531,7 +531,7 @@ def segment_images(process_id):
           io.imsave(out_path + str(rect_id) + '.png', cropped)
       except Exception as exc:
         with open('failed_inside_segment_images.txt', 'a') as exc_out:
-          exc_out.write(str(c) + '-' + str(page_idx) + '\n')
+          exc_out.write(str(c) + '-' + str(page_index) + '\n')
         
 
 def convert_coordinates(xml_coordinate_array, jp2_array, page):
