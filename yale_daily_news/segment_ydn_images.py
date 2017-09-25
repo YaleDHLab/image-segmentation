@@ -105,12 +105,14 @@ def jp2_path_to_array(path_to_jp2_file):
 
   # if an exception arises, then read the image from disk and write its npy file
   except Exception as exc:
+    print(' * could not read', path_to_saved_numpy_array, 'from disk, fetching', path_to_jp2_file)
     try:
       jp2_array = io.imread(path_to_jp2_file, plugin='freeimage')
       write_jp2_array_to_disk(jp2_array, path_to_jp2_file)
       return jp2_array
 
-    except Exception:
+    except Exception as exc:
+      print(' * failed to parse', path_to_jp2_file, exc)
       with open('unprocessable-images.txt', 'a') as out:
         out.write(path_to_jp2_file + '\n')
 
@@ -125,12 +127,13 @@ def write_jp2_array_to_disk(jp2_array, jp2_path):
   jp2_filename = os.path.basename(jp2_path)
   jp2_issue_directory = jp2_path.split('/')[-2]
 
-  out_directory = 'numpy_arrays/' + jp2_issue_directory + '/'
+  out_directory = './numpy_arrays/' + jp2_issue_directory + '/'
   out_path = out_directory + jp2_filename + '.npy'
 
   if not os.path.exists(out_directory):
     os.makedirs(out_directory)
 
+  print(' * saving', jp2_path) 
   np.save(out_path, jp2_array)
 
 
@@ -413,8 +416,6 @@ def generate_issue_page_rectangle_mapping(root_data_directory):
               if current_img != img_with_rect:
                 rects_already_stored = True
 
-            print article_index, xml_coord_index, img_with_rect, rect_id
-
             if not rects_already_stored:
               rects_to_articles[issue_directory][article_xml_filename][article_index].append({
                 'img_with_rect': img_with_rect,
@@ -489,44 +490,48 @@ def segment_images(process_id):
     if c % n_processes != process_id:
       continue
 
-    for page in rectangle_mappings[issue_directory].iterkeys():
+    for page_index, page in enumerate(rectangle_mappings[issue_directory].iterkeys()):
+      try:
 
-      # fetch the numpy array for cropping
-      jp2_array = jp2_path_to_array(issue_directory + '/' + page)
-      if jp2_array is None:
-        continue
-
-      for rect in rectangle_mappings[issue_directory][page]:
-        rect_id = rect['rect_id']
-        rect_coords = rect['coords']
-        jp2_coordinates = convert_coordinates(rect_coords, jp2_array, page)
-
-        if not jp2_coordinates:
-          print 'jp2_coordinates unavailable for', page
+        # fetch the numpy array for cropping
+        jp2_array = jp2_path_to_array(issue_directory + '/' + page)
+        if jp2_array is None:
           continue
 
-        min_row, max_row, min_col, max_col = [int(i) for i in jp2_coordinates]
+        for rect in rectangle_mappings[issue_directory][page]:
+          rect_id = rect['rect_id']
+          rect_coords = rect['coords']
+          jp2_coordinates = convert_coordinates(rect_coords, jp2_array, page)
 
-        # apply the padding to each value
-        min_row -= padding
-        max_row += padding
-        min_col -= padding
-        max_col += padding
+          if not jp2_coordinates:
+            print 'jp2_coordinates unavailable for', page
+            continue
 
-        if verbosity_level > 1:
-          print issue_directory, page, article_index
-          print xml_coordinates
-          print min_row, max_row, min_col, max_col
+          min_row, max_row, min_col, max_col = [int(i) for i in jp2_coordinates]
 
-        cropped = jp2_array[min_row:max_row, min_col:max_col]
+          # apply the padding to each value
+          min_row -= padding
+          max_row += padding
+          min_col -= padding
+          max_col += padding
 
-        # write the cropped image to disk
-        out_path  = 'cropped_images/' + issue_directory + '/'
+          if verbosity_level > 1:
+            print issue_directory, page, article_index
+            print xml_coordinates
+            print min_row, max_row, min_col, max_col
 
-        if not os.path.exists(out_path):
-          os.makedirs(out_path)
+          cropped = jp2_array[min_row:max_row, min_col:max_col]
 
-        io.imsave(out_path + str(rect_id) + '.png', cropped)
+          # write the cropped image to disk
+          out_path  = 'cropped_images/' + issue_directory + '/'
+
+          if not os.path.exists(out_path):
+            os.makedirs(out_path)
+
+          io.imsave(out_path + str(rect_id) + '.png', cropped)
+      except Exception as exc:
+        with open('failed_inside_segment_images.txt', 'a') as exc_out:
+          exc_out.write(str(c) + '-' + str(page_idx) + '\n')
         
 
 def convert_coordinates(xml_coordinate_array, jp2_array, page):
@@ -658,6 +663,12 @@ def stack_segmented_images():
     io.imsave(os.path.join(composite_path, str(article_id) + '.png'), composite_image)
 
 
+#def create_unique_namespace_filenames()
+  '''
+  Move all images from ./composite images to ./namespaced/filename.png
+  '''
+
+
 ##############
 # Main Block #
 ##############
@@ -691,19 +702,19 @@ if __name__ == '__main__':
       pass
 
   # Define the directory that contains subdirectories for each paper issue
-  root_data_directory = '/Users/doug/Desktop/ydn-sample/'
+  root_data_directory = '/media/dhlab/PG4T/ydn/ForProcessing/1900-1909'
 
   # Define whether to run code in verbose mode
   verbosity_level = 1
 
   # Identify the maximum number of processors to use during analysis
-  n_processes = 4
+  n_processes = 32
 
   # Specify the maximum number of files to process
-  max_files_to_process = 20
+  max_files_to_process = 9999999
 
   # allow users to toggle multiprocessing on/off
-  multiprocess = False
+  multiprocess = True
 
   # specify how much padding to add to cropped images
   padding = 5
@@ -737,3 +748,6 @@ if __name__ == '__main__':
 
   # Combine the segmented images for each article into one composite image
   stack_segmented_images()
+
+  # Save each image as one globally unique string name using path hierarchy
+  #create_unique_namespace_filenames()
