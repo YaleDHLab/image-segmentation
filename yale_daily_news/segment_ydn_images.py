@@ -6,6 +6,9 @@ from scipy import ndimage
 from shutil import Error, move, rmtree
 import numpy as np
 import glob, os, codecs, sys, json
+from PIL import Image
+import pytesseract
+
 
 '''
 ## Processing notes
@@ -456,10 +459,19 @@ def store_article_titles():
         # store the mapping from article path to first image path
         first_image_name = str(first_image['rect_id']) + '.png'
         path_to_first_image = os.path.join(article_path, first_image_name)
-        article_to_title[article_path] = path_to_first_image
+        best_guess_headline = pytesseract.image_to_string(Image.open('segmented_images' + path_to_first_image), lang='eng')
+        if best_guess_headline != '':
+        	best_guess_headline =  best_guess_headline.replace('-\n', '') # Fix hyphenation at column end
+ 	     	best_guess_headline =  best_guess_headline.replace('\n', ' ') # Put short lines together
+   	     	best_guess_headline = best_guess_headline[:100] # Take only the first part of the string (could be whole article!)
+        else:
+         	best_guess_headline = '[Untitled]' # If we got nothing, use placeholder.
+        print('Processing article: "' + best_guess_headline) 
+        article_to_title[article_path] = best_guess_headline
 
   with open('articles_to_titles.json', 'w') as out:
     json.dump(article_to_title, out)
+
 
 
 ##################
@@ -527,7 +539,14 @@ def segment_images(process_id):
           os.makedirs(out_path)
 
         io.imsave(out_path + str(rect_id) + '.png', cropped)
-        
+        # This is an ugly hack to force 300dpi into the png metadata.
+        # Without explicit dpi, tesseract assumes low (70) dpi; this is sub-optimal.
+        try:
+        	Image.open(out_path + str(rect_id) + '.png').save(out_path + str(rect_id) + '.png',dpi=[300,300])
+        except:
+   		 	print("Couldn't write DPI to file " + out_path + str(rect_id) + ".png")
+
+
 
 def convert_coordinates(xml_coordinate_array, jp2_array, page):
   '''
@@ -656,7 +675,11 @@ def stack_segmented_images():
       os.makedirs(composite_path)
 
     io.imsave(os.path.join(composite_path, str(article_id) + '.png'), composite_image)
-
+    #ugly hack to get 300 dpi metadata which tesseract will need.
+    try:
+    	Image.open(os.path.join(composite_path, str(article_id) + '.png')).save(os.path.join(composite_path, str(article_id) + '.png'),dpi=[300,300])
+    except:
+    	print("Couldn't write DPI to file " + composite_path, str(article_id) + ".png")
 
 ##############
 # Main Block #
@@ -691,19 +714,19 @@ if __name__ == '__main__':
       pass
 
   # Define the directory that contains subdirectories for each paper issue
-  root_data_directory = '/Users/doug/Desktop/ydn-sample/'
+  root_data_directory = '/media/dhlab/PG4T/ydn/fourissuesonly'
 
   # Define whether to run code in verbose mode
   verbosity_level = 1
 
   # Identify the maximum number of processors to use during analysis
-  n_processes = 4
+  n_processes = 8
 
   # Specify the maximum number of files to process
-  max_files_to_process = 20
+  max_files_to_process = 1000000
 
   # allow users to toggle multiprocessing on/off
-  multiprocess = False
+  multiprocess = True
 
   # specify how much padding to add to cropped images
   padding = 5
